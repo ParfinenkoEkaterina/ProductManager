@@ -13,7 +13,7 @@ public class Manager {
 
     public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        for(Product product: repository.findAll()) {
+        for (Product product : repository.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
                 for (int i = 0; i < result.length; i++) {
@@ -21,16 +21,24 @@ public class Manager {
                 }
                 tmp[tmp.length - 1] = product;
                 result = tmp;
+            }
         }
+        return result;
     }
-    return result;
-}
 
-    private boolean matches(Product product, String search) {
+    public boolean matches(Product product, String search) {
         if (product.getName().contains(search)) {
             return true;
-        } else {
-            return false;
         }
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            if (book.getAuthor().contains(search)) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+
+        return false;
     }
 }
