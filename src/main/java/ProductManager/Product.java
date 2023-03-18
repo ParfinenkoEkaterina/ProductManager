@@ -1,4 +1,5 @@
 package ProductManager;
+
 public class Product {
     protected int id;
     protected String name;
@@ -15,6 +16,7 @@ public class Product {
     }
 
     public String getName() {
+
         return name;
     }
 

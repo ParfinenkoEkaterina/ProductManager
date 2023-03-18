@@ -30,6 +30,7 @@ public class RepositoryTest {
 
         Assertions.assertArrayEquals(expected, actual);
     }
+
     @Test
     public void shouldAddOnlySmartphone() {
         Repository repo = new Repository();
@@ -86,7 +87,6 @@ public class RepositoryTest {
 
         manager.add(smartphone2);
 
-
         repo.removeById(11);
 
         Product[] expected = new Product[]{};
@@ -136,10 +136,31 @@ public class RepositoryTest {
         Assertions.assertArrayEquals(expected, actual);
     }
 
+    @Test
+    public void setProductByPrice() {
+        Repository repo = new Repository();
+        Manager manager = new Manager(repo);
+
+        Product product = new Product(10, "GoodPhone", 30000);
+
+        Product smartphone1 = new Smartphone(10, "GoodPhone", 30000, "Good Vendor");
+        Product smartphone2 = new Smartphone(11, "NewPhone", 35000, "New Vendor");
+        Product smartphone3 = new Smartphone(12, "GreatPhone", 38000, "Greate Vendor");
+
+        manager.add(smartphone1);
+        manager.add(smartphone2);
+        manager.add(smartphone3);
 
 
-
-
-
-
+        int expected = 30000;
+        int actual = product.getPrice();
+        Assertions.assertEquals(expected, actual);
+    }
 }
+
+
+
+
+
+
+

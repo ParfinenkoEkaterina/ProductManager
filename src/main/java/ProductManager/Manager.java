@@ -34,20 +34,15 @@ public class Manager {
             Book book = (Book) product;
             if (book.getAuthor().contains(search)) {
                 return true;
-            } else {
-                return false;
             }
         }
         if (product instanceof Smartphone) {
             Smartphone smartphone = (Smartphone) product;
             if (smartphone.getVendor().contains(search)) {
                 return true;
-            } else {
-                return false;
             }
         }
 
         return false;
     }
-
 }

@@ -41,7 +41,6 @@ public class ManagerTest {
         Product[] actual = manager.searchBy("Ronny");
 
         Assertions.assertArrayEquals(expected, actual);
-
     }
 
     @Test
@@ -61,7 +60,6 @@ public class ManagerTest {
         Product[] actual = manager.searchBy("Harry Potter");
 
         Assertions.assertArrayEquals(expected, actual);
-
     }
 
     @Test
@@ -103,8 +101,6 @@ public class ManagerTest {
         boolean expected = true;
         boolean actual = manager.matches(book1, "Usachev");
 
-
-
         Assertions.assertEquals(expected, actual);
     }
 
@@ -145,8 +141,7 @@ public class ManagerTest {
         boolean expected = true;
         boolean actual = manager.matches(smartphone3, "Greate Vendor");
 
-        Assertions.assertEquals(expected,actual);
-
+        Assertions.assertEquals(expected, actual);
     }
 
     @Test
@@ -173,11 +168,10 @@ public class ManagerTest {
 
 
         Assertions.assertEquals(expected, actual);
-
     }
 
 
-    }
+}
 
 
 
