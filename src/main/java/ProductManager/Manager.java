@@ -29,20 +29,10 @@ public class Manager {
     public boolean matches(Product product, String search) {
         if (product.getName().contains(search)) {
             return true;
-        }
-        if (product instanceof Book) {
-            Book book = (Book) product;
-            if (book.getAuthor().contains(search)) {
-                return true;
-            }
-        }
-        if (product instanceof Smartphone) {
-            Smartphone smartphone = (Smartphone) product;
-            if (smartphone.getVendor().contains(search)) {
-                return true;
-            }
+        } else {
+            return false;
         }
 
-        return false;
     }
+
 }
