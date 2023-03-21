@@ -156,6 +156,44 @@ public class RepositoryTest {
         int actual = product.getPrice();
         Assertions.assertEquals(expected, actual);
     }
+
+    @Test
+    public void shouldRemoveCorrectId() {
+        Repository repo = new Repository();
+        Product smartphone1 = new Smartphone(10, "GoodPhone", 30000, "Good Vendor");
+        Product smartphone2 = new Smartphone(11, "NewPhone", 35000, "New Vendor");
+        Product smartphone3 = new Smartphone(12, "GreatPhone", 38000, "Greate Vendor");
+
+        repo.add(smartphone1);
+        repo.add(smartphone2);
+        repo.add(smartphone3);
+        repo.removeById(2);
+
+        Product[] expected = {smartphone1, smartphone3};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
+
+    @Test
+    public void shouldRemoveNotCorrectId() {
+        Repository repo = new Repository();
+        Product smartphone1 = new Smartphone(10, "GoodPhone", 30000, "Good Vendor");
+        Product smartphone2 = new Smartphone(11, "NewPhone", 35000, "New Vendor");
+        Product smartphone3 = new Smartphone(12, "GreatPhone", 38000, "Greate Vendor");
+
+        repo.add(smartphone1);
+        repo.add(smartphone2);
+        repo.add(smartphone3);
+        repo.removeById(4);
+
+        Product[] expected = {smartphone1, smartphone3};
+        Product[] actual = repo.findAll();
+
+        Assertions.assertArrayEquals(expected, actual);
+
+    }
 }
 
 
