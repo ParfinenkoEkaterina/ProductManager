@@ -91,6 +91,7 @@ public class RepositoryTest {
 
         Product[] expected = new Product[]{};
         Product[] actual = repo.findAll();
+
         Assertions.assertArrayEquals(expected, actual);
     }
 
@@ -167,14 +168,12 @@ public class RepositoryTest {
         repo.add(smartphone1);
         repo.add(smartphone2);
         repo.add(smartphone3);
-        repo.removeById(2);
+        repo.removeById(10);
 
-        Product[] expected = {smartphone1, smartphone3};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-
+        Assertions.assertThrows(NotFoundException.class,
+                () -> repo.removeById(10));
     }
+
 
     @Test
     public void shouldRemoveNotCorrectId() {
@@ -186,13 +185,9 @@ public class RepositoryTest {
         repo.add(smartphone1);
         repo.add(smartphone2);
         repo.add(smartphone3);
-        repo.removeById(4);
 
-        Product[] expected = {smartphone1, smartphone3};
-        Product[] actual = repo.findAll();
-
-        Assertions.assertArrayEquals(expected, actual);
-
+        Assertions.assertThrows(NotFoundException.class,
+                () -> repo.removeById(13));
     }
 }
 
