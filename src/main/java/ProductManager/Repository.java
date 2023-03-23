@@ -21,11 +21,6 @@ public class Repository {
         if (foundProduct == null) {
             throw new NotFoundException(removeId);
         }
-        if (this.findById(foundProduct.getId() != null))
-       {
-            throw new AlreadyExistsException(" Товар с id " + id + " уже существует ");
-        }
-
 
 
         Product[] tmp = new Product[products.length - 1];
